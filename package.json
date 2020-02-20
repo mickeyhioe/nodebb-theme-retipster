@@ -1,10 +1,22 @@
 {
-  "name": "nodebb-theme-quickstart",
-  "version": "0.0.0",
-  "description": "Enter a description here",
+  "name": "nodebb-theme-retipster",
+  "version": "0.0.1",
+  "description": "REtipster theme",
   "main": "theme.less",
   "keywords": [
 
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "author": {
+    "name": "Mickey Hioe",
+    "email": "72dpi@pixeldreams.com",
+    "url": "https://pixeldreams.com"
+  },
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/mickeyhioe/nodebb-theme-retipster"
+  },
+  "bugs": {
+      "url": "https://github.com/mickeyhioe/nodebb-theme-retipster/issues"
+  }
 }
