@@ -3,20 +3,21 @@
   "version": "0.0.1",
   "description": "REtipster theme",
   "main": "theme.less",
-  "keywords": [
-
-  ],
+  "keywords": [],
   "license": "MIT",
-  "author": {
-    "name": "Mickey Hioe",
-    "email": "72dpi@pixeldreams.com",
-    "url": "https://pixeldreams.com"
-  },
+  "author": "Mickey Hioe <72dpi@pixeldreams.com> (https://pixeldreams.com)",
   "repository": {
-      "type": "git",
-      "url": "https://github.com/mickeyhioe/nodebb-theme-retipster"
+    "type": "git",
+    "url": "git+https://github.com/mickeyhioe/nodebb-theme-retipster.git"
   },
   "bugs": {
-      "url": "https://github.com/mickeyhioe/nodebb-theme-retipster/issues"
+    "url": "https://github.com/mickeyhioe/nodebb-theme-retipster/issues"
+  },
+  "homepage": "https://github.com/mickeyhioe/nodebb-theme-retipster#readme",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
