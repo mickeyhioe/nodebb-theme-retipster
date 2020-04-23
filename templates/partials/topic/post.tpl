@@ -11,14 +11,12 @@
 		</a>
 	</div>
 
-	<small class="pull-left">
-		<strong>
-			<a href="<!-- IF posts.user.userslug -->{config.relative_path}/user/{posts.user.userslug}<!-- ELSE -->#<!-- ENDIF posts.user.userslug -->" itemprop="author" data-username="{posts.user.username}" data-uid="{posts.user.uid}" data-fullname="{posts.user.fullname}">
-                <!-- IF posts.user.fullname -->{posts.user.fullname}<!-- ELSE -->
-                {posts.user.username}<!-- ENDIF posts.user.fullname -->
-            </a>
-		</strong>
-
+	<small class="pull-left">		
+        <a href="<!-- IF posts.user.userslug -->{config.relative_path}/user/{posts.user.userslug}<!-- ELSE -->#<!-- ENDIF posts.user.userslug -->" itemprop="author" data-username="{posts.user.username}" data-uid="{posts.user.uid}" data-fullname="{posts.user.fullname}">                
+            <strong>{posts.user.username}</strong>
+            <!-- IF posts.user.fullname --><span class="fullname">{posts.user.fullname}</span><!-- ENDIF posts.user.fullname -->
+        </a>
+        
 		<!-- IMPORT partials/topic/badge.tpl -->
 
 		<!-- IF posts.user.banned -->
