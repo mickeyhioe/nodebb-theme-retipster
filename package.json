@@ -5,6 +5,9 @@
   "main": "theme.less",
   "keywords": [],
   "license": "MIT",
+  "nbbpm": {
+    "compatibility": "^1.13.0"
+  },
   "author": "Mickey Hioe <72dpi@pixeldreams.com> (https://pixeldreams.com)",
   "repository": {
     "type": "git",
