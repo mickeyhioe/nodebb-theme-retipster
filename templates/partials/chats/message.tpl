@@ -11,7 +11,7 @@
         <span class="chat-user">
             <a href="{config.relative_path}/user/{messages.fromUser.userslug}">
                 <strong>{messages.fromUser.username}</strong>
-                <span class="fullname">{messages.fromUser.fullname}</span>
+                <!-- IF messages.fromUser.fullname --><span class="fullname">{messages.fromUser.fullname}</span><!-- ENDIF messages.fromUser.fullname -->
             </a>
         </span>
         
