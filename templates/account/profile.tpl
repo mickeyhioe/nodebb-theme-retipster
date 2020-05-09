@@ -28,7 +28,7 @@
 		<!-- ENDIF selectedGroup.length -->
 
 		<!-- IF aboutme -->
-		<span component="aboutme" class="text-center aboutme">{aboutmeParsed}</span>
+		<div component="aboutme" class="text-center aboutme">{aboutmeParsed}</div>
 		<!-- ENDIF aboutme -->
 
 		<div class="account-stats">
