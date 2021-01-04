@@ -3,17 +3,20 @@
 		<a href="<!-- IF posts.user.userslug -->{config.relative_path}/user/{posts.user.userslug}<!-- ELSE -->#<!-- ENDIF posts.user.userslug -->">
 			{buildAvatar(posts.user, "sm2x", true, "", "user/picture")}
 			<i component="user/status" class="fa fa-circle status {posts.user.status}" title="[[global:{posts.user.status}]]"></i>
-
 		</a>
 	</div>
 
-	<small class="pull-left">		
-        <a href="<!-- IF posts.user.userslug -->{config.relative_path}/user/{posts.user.userslug}<!-- ELSE -->#<!-- ENDIF posts.user.userslug -->" itemprop="author" data-username="{posts.user.username}" data-uid="{posts.user.uid}" data-fullname="{posts.user.fullname}">                
+	<small class="pull-left">
+		<a href="<!-- IF posts.user.userslug -->{config.relative_path}/user/{posts.user.userslug}<!-- ELSE -->#<!-- ENDIF posts.user.userslug -->" itemprop="author" data-username="{posts.user.username}" data-uid="{posts.user.uid}" data-fullname="{posts.user.fullname}">                
             <strong>{posts.user.username}</strong>
             <!-- IF posts.user.fullname --><span class="fullname">{posts.user.fullname}</span><!-- ENDIF posts.user.fullname -->
         </a>
-        
-		<!-- IMPORT partials/topic/badge.tpl -->
+
+		{{{each posts.user.selectedGroups}}}
+<!-- IF posts.user.selectedGroups.slug -->
+<a href="{config.relative_path}/groups/{posts.user.selectedGroups.slug}"><small class="label group-label inline-block" style="color:{posts.user.selectedGroups.textColor};background-color: {posts.user.selectedGroups.labelColor};"><!-- IF posts.user.selectedGroups.icon --><i class="fa {posts.user.selectedGroups.icon}"></i> <!-- ENDIF posts.user.selectedGroups.icon -->{posts.user.selectedGroups.userTitle}</small></a>
+<!-- ENDIF posts.user.selectedGroups.slug -->
+{{{end}}}
 
 		<!-- IF posts.user.banned -->
 		<span class="label label-danger">[[user:banned]]</span>
@@ -59,25 +62,67 @@
 		<span class="post-tools">
 			<a component="post/reply" href="#" class="no-select <!-- IF !privileges.topics:reply -->hidden<!-- ENDIF !privileges.topics:reply -->">[[topic:reply]]</a>
 			<a component="post/quote" href="#" class="no-select <!-- IF !privileges.topics:reply -->hidden<!-- ENDIF !privileges.topics:reply -->">[[topic:quote]]</a>
-		</span>
+        </span>
+        
+        <!-- Share -->
+        <span component="post/tools" class="share-tools dropdown bottom-sheet <!-- IF !posts.display_post_menu -->hidden<!-- ENDIF !posts.display_post_menu -->">
+            <a href="#" title="Share" data-toggle="dropdown"><i class="fa fa-fw fa-16px fa-share"></i></a>
+            <ul class="dropdown-menu dropdown-menu-right" role="menu">           
+                <!-- IF postSharing.length -->
+                <li class="dropdown-header">[[topic:share_this_post]]</li>
+                <!-- ENDIF postSharing.length -->
+                {{{each postSharing}}}
+                    <li>
+                        <a role="menuitem" component="share/{postSharing.id}" tabindex="-1" href="#"><span class="menu-icon"><i class="fa fa-fw {postSharing.class}"></i></span> {postSharing.name}</a>
+                    </li>
+                {{{end}}} 
+            </ul>
+        </span>
+        <!-- /Share -->
+		
+		<!-- IF !posts.deleted -->
+        	<!-- IF config.loggedIn -->
+        	<span class="bookmark-tools">
+        		<a component="post/bookmark" title="Bookmark" role="menuitem" tabindex="-1" href="#" class="no-focus" data-bookmarked="{posts.bookmarked}">
+        			<span class="menu-icon">
+        				<i component="post/bookmark/on" class="fa fa-16px fa-fw fa-bookmark <!-- IF !posts.bookmarked -->hidden<!-- ENDIF !posts.bookmarked -->"></i>
+        				<i component="post/bookmark/off" class="fa fa-16px fa-fw fa-bookmark-o <!-- IF posts.bookmarked -->hidden<!-- ENDIF posts.bookmarked -->"></i>
+        			</span>        			
+        		</a>
+        	</span>
+        	<!-- ENDIF config.loggedIn -->
+        <!-- ENDIF !posts.deleted -->
 
 		<!-- IF !reputation:disabled -->
 		<span class="votes">
 			<a component="post/upvote" href="#" class="<!-- IF posts.upvoted -->upvoted<!-- ENDIF posts.upvoted -->">
-				<i class="fa fa-chevron-up"></i>
+				<i class="fa fa-16px fa-chevron-up"></i>
 			</a>
 
 			<span component="post/vote-count" data-votes="{posts.votes}">{posts.votes}</span>
 
 			<!-- IF !downvote:disabled -->
 			<a component="post/downvote" href="#" class="<!-- IF posts.downvoted -->downvoted<!-- ENDIF posts.downvoted -->">
-				<i class="fa fa-chevron-down"></i>
+				<i class="fa fa-16px fa-chevron-down"></i>
 			</a>
 			<!-- ENDIF !downvote:disabled -->
 		</span>
-		<!-- ENDIF !reputation:disabled -->
+        <!-- ENDIF !reputation:disabled -->
+        
+        <!-- Flag -->
+        <span component="post/tools" class="flag-tools dropdown bottom-sheet <!-- IF !posts.display_post_menu -->hidden<!-- ENDIF !posts.display_post_menu -->">
+            <a href="#" title="Flag" data-toggle="dropdown"><i class="fa fa-fw fa-16px fa-flag"></i></a>
+            <ul class="dropdown-menu dropdown-menu-right" role="menu">           
+                <li>
+                    <a component="post/flag" role="menuitem" tabindex="-1" href="#"><i class="fa fa-fw fa-flag"></i> Flag this post</a>
+                </li>
+                <li>
+                <a component="post/flagUser" role="menuitem" tabindex="-1" href="#"><i class="fa fa-fw fa-flag"></i> Flag this user</a>
+                </li>
+            </ul>
+        </span>
+        <!-- /Flag -->
 
-		<!-- IMPORT partials/topic/post-menu.tpl -->
 	</small>
 
 	<!-- IF !hideReplies -->

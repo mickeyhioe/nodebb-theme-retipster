@@ -13,3 +13,41 @@
         }
     }
 }
+
+.share-tools,
+.flag-tools,
+.bookmark-tools{
+    position: relative;
+    > a{
+        color: #6c757d;
+        text-decoration: none;
+        margin: 0 5px;
+        &:focus{
+            outline: none;
+        }
+        &:hover{
+            text-decoration: none;
+            color: #337ab7;
+        }
+    }
+}
+
+.fa.fa-16px{
+    font-size: 16px;
+}
+
+.topic {
+    [component="post/bookmark"] {
+        .on{
+            color: #337ab7;
+        }
+    }
+}
+
+.stat-tools{
+    margin-top: 10px;
+    margin-left: 62px;
+    .stats{
+        margin-right: 15px;
+    }
+}
