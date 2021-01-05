@@ -13,10 +13,10 @@
         </a>
 
 		{{{each posts.user.selectedGroups}}}
-<!-- IF posts.user.selectedGroups.slug -->
-<a href="{config.relative_path}/groups/{posts.user.selectedGroups.slug}"><small class="label group-label inline-block" style="color:{posts.user.selectedGroups.textColor};background-color: {posts.user.selectedGroups.labelColor};"><!-- IF posts.user.selectedGroups.icon --><i class="fa {posts.user.selectedGroups.icon}"></i> <!-- ENDIF posts.user.selectedGroups.icon -->{posts.user.selectedGroups.userTitle}</small></a>
-<!-- ENDIF posts.user.selectedGroups.slug -->
-{{{end}}}
+        <!-- IF posts.user.selectedGroups.slug -->
+        <a href="{config.relative_path}/groups/{posts.user.selectedGroups.slug}"><small class="label group-label inline-block" style="color:{posts.user.selectedGroups.textColor};background-color: {posts.user.selectedGroups.labelColor};"><!-- IF posts.user.selectedGroups.icon --><i class="fa {posts.user.selectedGroups.icon}"></i> <!-- ENDIF posts.user.selectedGroups.icon -->{posts.user.selectedGroups.userTitle}</small></a>
+        <!-- ENDIF posts.user.selectedGroups.slug -->
+        {{{end}}}
 
 		<!-- IF posts.user.banned -->
 		<span class="label label-danger">[[user:banned]]</span>
@@ -93,6 +93,20 @@
         	<!-- ENDIF config.loggedIn -->
         <!-- ENDIF !posts.deleted -->
 
+        <!-- Flag -->
+        <span component="post/tools" class="flag-tools dropdown bottom-sheet <!-- IF !posts.display_post_menu -->hidden<!-- ENDIF !posts.display_post_menu -->">
+            <a href="#" title="Flag" data-toggle="dropdown"><i class="fa fa-fw fa-16px fa-flag"></i></a>
+            <ul class="dropdown-menu dropdown-menu-right" role="menu">           
+                <li>
+                    <a component="post/flag" role="menuitem" tabindex="-1" href="#"><i class="fa fa-fw fa-flag"></i> Flag this post</a>
+                </li>
+                <li>
+                <a component="post/flagUser" role="menuitem" tabindex="-1" href="#"><i class="fa fa-fw fa-flag"></i> Flag this user</a>
+                </li>
+            </ul>
+        </span>
+        <!-- /Flag -->
+
 		<!-- IF !reputation:disabled -->
 		<span class="votes">
 			<a component="post/upvote" href="#" class="<!-- IF posts.upvoted -->upvoted<!-- ENDIF posts.upvoted -->">
@@ -109,19 +123,10 @@
 		</span>
         <!-- ENDIF !reputation:disabled -->
         
-        <!-- Flag -->
-        <span component="post/tools" class="flag-tools dropdown bottom-sheet <!-- IF !posts.display_post_menu -->hidden<!-- ENDIF !posts.display_post_menu -->">
-            <a href="#" title="Flag" data-toggle="dropdown"><i class="fa fa-fw fa-16px fa-flag"></i></a>
-            <ul class="dropdown-menu dropdown-menu-right" role="menu">           
-                <li>
-                    <a component="post/flag" role="menuitem" tabindex="-1" href="#"><i class="fa fa-fw fa-flag"></i> Flag this post</a>
-                </li>
-                <li>
-                <a component="post/flagUser" role="menuitem" tabindex="-1" href="#"><i class="fa fa-fw fa-flag"></i> Flag this user</a>
-                </li>
-            </ul>
+        <span component="post/tools" class="dropdown moderator-tools bottom-sheet <!-- IF !posts.display_post_menu -->hidden<!-- ENDIF !posts.display_post_menu -->">
+            <a href="#" data-toggle="dropdown" data-ajaxify="false"><i class="fa fa-fw fa-ellipsis-v"></i></a>
+            <ul class="dropdown-menu dropdown-menu-right" role="menu"></ul>
         </span>
-        <!-- /Flag -->
 
 	</small>
 

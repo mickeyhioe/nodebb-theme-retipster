@@ -1,6 +1,6 @@
 {
   "name": "nodebb-theme-retipster",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "REtipster theme",
   "main": "theme.less",
   "keywords": [],
