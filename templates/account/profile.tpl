@@ -40,22 +40,22 @@
 			<!-- ENDIF !reputation:disabled -->
 
 			<div class="stat">
-				<div class="human-readable-number" title="{postcount}">{postcount}</div>
-				<span class="stat-label">[[global:posts]]</span>
-			</div>
-
-			<div class="stat">
 				<div class="human-readable-number" title="{profileviews}">{profileviews}</div>
 				<span class="stat-label">[[user:profile_views]]</span>
 			</div>
 
 			<div class="stat">
-				<div class="human-readable-number" title="{followerCount}">{followerCount}</div>
+				<div><a class="human-readable-number" title="{counts.posts}" href="{config.relative_path}/user/{userslug}/posts">{counts.posts}</a></div>
+				<span class="stat-label">[[global:posts]]</span>
+			</div>
+
+			<div class="stat">
+				<div><a class="human-readable-number" title="{counts.followers}" href="{config.relative_path}/user/{userslug}/followers">{counts.followers}</a></div>
 				<span class="stat-label">[[user:followers]]</span>
 			</div>
 
 			<div class="stat">
-				<div class="human-readable-number"  title="{followingCount}">{followingCount}</div>
+				<div><a class="human-readable-number" title="{counts.following}" href="{config.relative_path}/user/{userslug}/following">{counts.following}</a></div>
 				<span class="stat-label">[[user:following]]</span>
 			</div>
 		</div>
@@ -136,14 +136,11 @@
 	<!-- ENDIF ips.length -->
 
 	<div class="row">
+		{{{ if bestPosts.length }}}
 		<div class="col-lg-6 col-xs-12">
-			<h2>[[pages:account/best, {fullname}]]</h2>
+			<h1>[[pages:account/best, {fullname}]]</h1>
 
 			<div class="col-xs-12">
-				<!-- IF !bestPosts.length -->
-				<div class="alert alert-warning">[[user:has_no_posts]]</div>
-				<!-- ENDIF !bestPosts.length -->
-
 				<ul component="posts" class="posts-list">
 				{{{each bestPosts}}}
 				<!-- IMPORT partials/posts_list_item.tpl -->
@@ -151,13 +148,11 @@
 				</ul>
 			</div>
 		</div>
+		{{{ end }}}
+		{{{ if latestPosts.length}}}
 		<div class="col-lg-6 col-xs-12">
-			<h2>[[pages:account/latest-posts, {fullname}]]</h2>
-
+			<h1>[[pages:account/latest-posts, {fullname}]]</h1>
 			<div class="col-xs-12">
-				<!-- IF !latestPosts.length -->
-				<div class="alert alert-warning">[[user:has_no_posts]]</div>
-				<!-- ENDIF !latestPosts.length -->
 				<ul component="posts" class="posts-list">
 				{{{each latestPosts}}}
 				<!-- IMPORT partials/posts_list_item.tpl -->
@@ -165,6 +160,7 @@
 				</ul>
 			</div>
 		</div>
+		{{{ end }}}
 	</div>
 
 	<div id="user-action-alert" class="alert alert-success hide"></div>

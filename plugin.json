@@ -2,12 +2,11 @@
 	"id": "nodebb-theme-retipster",
 	"library": "./lib/theme.js",
 	"hooks": [
-		{
-			"hook": "filter:widgets.getAreas", "method": "defineWidgetAreas"
-		}
+        { "hook": "filter:widgets.getAreas", "method": "defineWidgetAreas" },        
+		{ "hook": "filter:category.topics.get", "method": "getTopics" }
 	],
 	"scripts": [
-		"lib/client.js",
+		"./lib/client.js",
 		"../nodebb-theme-persona/public/persona.js",
 		"../nodebb-theme-persona/public/modules/autohidingnavbar.js",
 		"../nodebb-theme-persona/public/modules/quickreply.js"
