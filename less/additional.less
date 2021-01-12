@@ -14,6 +14,10 @@
     }
 }
 
+a:focus{
+    text-decoration: none!important;
+}
+
 .share-tools,
 .flag-tools,
 .bookmark-tools{
@@ -24,6 +28,7 @@
         margin: 0 5px;
         &:focus{
             outline: none;
+            text-decoration: none;
         }
         &:hover{
             text-decoration: none;
@@ -31,6 +36,8 @@
         }
     }
 }
+
+
 
 .fa.fa-16px{
     font-size: 16px;
@@ -50,5 +57,18 @@
     .stats{
         margin-right: 15px;
         font-size: 16px;
+        > a{
+            color: #6c757d;
+            text-decoration: none;
+            margin: 0 5px;
+            &:focus{
+                outline: none;
+                text-decoration: none;
+            }
+            &:hover{
+                text-decoration: none;
+                color: #337ab7;
+            }
+        }
     }
 }

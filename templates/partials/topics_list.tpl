@@ -2,7 +2,7 @@
 	<meta itemprop="itemListOrder" content="descending">
 	{{{each topics}}}
 	<li component="category/topic" class="row clearfix category-item {function.generateTopicClass}" <!-- IMPORT partials/data/category.tpl -->>
-		<a id="{../index}" data-index="{../index}" component="topic/anchor"></a>
+		<a id="{../index}" data-index="{../index}" data-pid="{./mainPid}" component="topic/anchor"></a>
         <meta itemprop="name" content="{function.stripTags, title}">
             
         <div class="col-md-9 col-sm-9 col-xs-10 content">
@@ -78,19 +78,6 @@
                     {{{ end }}}
                 </span>
 
-                {{{ if config.loggedIn }}}
-                <!-- Bookmark -->
-                <span class="stats stats-bookmark">
-                    <a component="post/bookmark" data-bookmarked="{{{ if ./bookmarked }}}true{{{ else }}}false{{{ end }}}" href="#">
-                        <i component="post/bookmark/on" class="fa fa-16px fa-fw fa-bookmark {{{ if !./bookmarked }}}hidden{{{ end }}}"></i>
-                        <i component="post/bookmark/off" class="fa fa-16px fa-fw fa-bookmark-o {{{ if ./bookmarked }}}hidden{{{ end }}}"></i>
-                        <span class="human-readable-number" component="post/bookmark-count" data-bookmarks="{./bookmarks}">{./bookmarks}</span>
-                    </a>                    
-                </span>
-			    
-                <!-- /Bookmark -->
-                {{{ end }}} 
-
                 <!-- Post -->
                 <span class="stats stats-postcount">
                     <a href="{config.relative_path}/topic/{topics.slug}<!-- IF topics.bookmark -->/{topics.bookmark}<!-- ENDIF topics.bookmark -->" itemprop="url">
@@ -107,17 +94,27 @@
                 </span>
                 <!-- /View -->
 
+                {{{ if config.loggedIn }}}
+                <!-- Bookmark -->
+                <span class="stats stats-bookmark">
+                    <a component="post/bookmark" data-bookmarked="{{{ if ./bookmarked }}}true{{{ else }}}false{{{ end }}}" test="{{ ./bookmarked }}" href="#">
+                        <i component="post/bookmark/on" class="fa fa-16px fa-fw fa-bookmark {{{ if !./bookmarked }}}hidden{{{ end }}}"></i>
+                        <i component="post/bookmark/off" class="fa fa-16px fa-fw fa-bookmark-o {{{ if ./bookmarked }}}hidden{{{ end }}}"></i>
+                    </a>                   
+                </span>			    
+                <!-- /Bookmark -->
+                {{{ end }}} 
+                
                 <!-- Share -->
-                <span class="share-tools">
-                    <a href="#" data-toggle="dropdown" title="[[topic:share_this_post]]"><i class="fa fa-16px fa-fw fa-share"></i></a>
-                    <ul class="dropdown-menu" role="menu">
-                    
-                        <!-- IF postSharing.length -->
+                <span class="stats share-tools">
+                    <a href="#" data-toggle="dropdown" title="[[topic:share_this_post]]"><i class="fa fa-16px fa-fw fa-share"></i></a>                    
+                    <ul class="dropdown-menu" role="menu">                    
+                        {{{ if ./postSharing.length }}}
                         <li class="dropdown-header">[[topic:share_this_post]]</li>
-                        <!-- ENDIF postSharing.length -->
-                        {{{each post.index.postSharing}}}
+                        {{{ end }}}
+                        {{{each ./postSharing}}}
                             <li>
-                                <a role="menuitem" component="share/{postSharing.id}" tabindex="-1" href="#"><span class="menu-icon"><i class="fa fa-fw {postSharing.class}"></i></span> {postSharing.name}</a>
+                                <a role="menuitem" component="share/{postSharing.id}" tabindex="-1" href="#"><span class="menu-icon"><i class="fa fa-fw {postSharing.class}"></i></span> {postSharing.name} </a>
                             </li>
                         {{{end}}}        
                     </ul>

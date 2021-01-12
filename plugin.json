@@ -3,7 +3,7 @@
 	"library": "./lib/theme.js",
 	"hooks": [
         { "hook": "filter:widgets.getAreas", "method": "defineWidgetAreas" },        
-		{ "hook": "filter:category.topics.get", "method": "getTopics" }
+		{ "hook": "filter:topics.get", "method": "getTopics" }
 	],
 	"scripts": [
 		"./lib/client.js",

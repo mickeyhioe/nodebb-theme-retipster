@@ -108,8 +108,7 @@
         			<span class="menu-icon">
         				<i component="post/bookmark/on" class="fa fa-16px fa-fw fa-bookmark <!-- IF !posts.bookmarked -->hidden<!-- ENDIF !posts.bookmarked -->"></i>
         				<i component="post/bookmark/off" class="fa fa-16px fa-fw fa-bookmark-o <!-- IF posts.bookmarked -->hidden<!-- ENDIF posts.bookmarked -->"></i>
-                    </span>
-                    
+                    </span>                    
         		</a>
         	</span>
         	<!-- ENDIF config.loggedIn -->
