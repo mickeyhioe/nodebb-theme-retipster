@@ -71,7 +71,7 @@
 
                 <span class="stats stats-votes votes">
                     {{{ if !reputation:disabled }}}
-                        <a component="post/upvote" href="#" class="{{{ if ./upvoted }}}upvoted{{{ end }}}">
+                        <a component="post/upvote" href="#" class="{{{ if ./upvoted }}}upvoted{{{ end }}}" title="Upvote" >
                             <i class="fa fa-16px fa-arrow-circle-up"></i>
                         </a>
                         <span class="human-readable-number" component="post/vote-count" data-votes="1" title="{./votes}">{./votes}</span>
@@ -80,7 +80,7 @@
 
                 <!-- Post -->
                 <span class="stats stats-postcount">
-                    <a href="{config.relative_path}/topic/{topics.slug}<!-- IF topics.bookmark -->/{topics.bookmark}<!-- ENDIF topics.bookmark -->" itemprop="url">
+                    <a href="{config.relative_path}/topic/{topics.slug}<!-- IF topics.bookmark -->/{topics.bookmark}<!-- ENDIF topics.bookmark -->" itemprop="url" title="Comment">
                         <i class="fa fa-16px fa-comment"></i>
                     </a>
                     <span class="human-readable-number" title="{topics.postcount}">{topics.postcount}</span>
@@ -88,7 +88,7 @@
                 <!-- /Post -->
 
                 <!-- View -->
-                <span class="stats stats-viewcount">
+                <span class="stats stats-viewcount" title="View">
                     <i class="fa fa-16px fa-eye"></i>
                     <span class="human-readable-number" title="{topics.viewcount}">{topics.viewcount}</span>
                 </span>
@@ -97,7 +97,7 @@
                 {{{ if config.loggedIn }}}
                 <!-- Bookmark -->
                 <span class="stats stats-bookmark">
-                    <a component="post/bookmark" data-bookmarked="{{{ if ./bookmarked }}}true{{{ else }}}false{{{ end }}}" test="{{ ./bookmarked }}" href="#">
+                    <a component="post/bookmark" data-bookmarked="{{{ if ./bookmarked }}}true{{{ else }}}false{{{ end }}}" test="{{ ./bookmarked }}" href="#" title="Bookmark">
                         <i component="post/bookmark/on" class="fa fa-16px fa-fw fa-bookmark {{{ if !./bookmarked }}}hidden{{{ end }}}"></i>
                         <i component="post/bookmark/off" class="fa fa-16px fa-fw fa-bookmark-o {{{ if ./bookmarked }}}hidden{{{ end }}}"></i>
                     </a>                   
@@ -116,7 +116,12 @@
                             <li>
                                 <a role="menuitem" component="share/{postSharing.id}" tabindex="-1" href="#"><span class="menu-icon"><i class="fa fa-fw {postSharing.class}"></i></span> {postSharing.name} </a>
                             </li>
-                        {{{end}}}        
+                        {{{end}}} 
+                        <li role="presentation">
+                            <a role="menuitem" component="share/copy" tabindex="-1" href="#">
+                                <span class="menu-icon"><i class="fa fa-copy"></i></span> Copy link
+                            </a>
+                        </li>                        
                     </ul>
                 </span>
                 <!-- /Share -->
