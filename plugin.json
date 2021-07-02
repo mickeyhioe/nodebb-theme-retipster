@@ -1,8 +1,9 @@
 {
 	"id": "nodebb-theme-retipster",
-	"main": "./lib/theme.js",
+	"library": "./lib/theme.js",
 	"hooks": [
-        { "hook": "filter:topics.get", "method": "getTopics" }
+        { "hook": "filter:widgets.getAreas", "method": "defineWidgetAreas" },        
+		{ "hook": "filter:topics.get", "method": "getTopics" }
 	],
 	"scripts": [
 		"public/client.js",
